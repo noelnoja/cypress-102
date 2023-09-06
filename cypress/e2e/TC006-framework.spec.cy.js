@@ -1,6 +1,9 @@
 /// <reference types="Cypress" />
+import HomePage from './pages/homePage';
 
 describe('Framework suite', function () {
+  const homePage = new HomePage();
+
   before(function () {
     cy.fixture('example').then(function (data) {
       this.data = data;
@@ -9,14 +12,12 @@ describe('Framework suite', function () {
 
   it('First test case', function () {
     cy.visit('https://rahulshettyacademy.com/angularpractice/');
-    cy.get(':nth-child(1) > .form-control').type(this.data.name);
-    cy.get('select').select(this.data.gender);
-    cy.get(':nth-child(4) > .ng-pristine').should('have.value', this.data.name);
-    cy.get(':nth-child(1) > .form-control')
-      .type(this.data.name)
-      .should('have.attr', 'minlength', '2');
-    cy.get('#inlineRadio3').should('be.disabled');
-    cy.get(':nth-child(2) > .nav-link').click();
+    homePage.getNameInput().type(this.data.name);
+    homePage.getNameInput().should('have.attr', 'minlength', '2');
+    homePage.selectGender().select(this.data.gender);
+    homePage.getDataBindingInput().should('have.value', this.data.name);
+    homePage.getEntrepreneurRadio().should('be.disabled');
+    homePage.productsLink().click();
     this.data.products.forEach((proudct) => {
       cy.addToCart(proudct);
     });
