@@ -1,8 +1,10 @@
 /// <reference types="Cypress" />
 import HomePage from './pages/homePage';
+import ProductsPage from './pages/productsPage';
 
 describe('Framework suite', function () {
   const homePage = new HomePage();
+  const productsPage = new ProductsPage();
 
   before(function () {
     cy.fixture('example').then(function (data) {
@@ -18,8 +20,11 @@ describe('Framework suite', function () {
     homePage.getDataBindingInput().should('have.value', this.data.name);
     homePage.getEntrepreneurRadio().should('be.disabled');
     homePage.productsLink().click();
+
     this.data.products.forEach((proudct) => {
       cy.addToCart(proudct);
     });
+
+    productsPage.getCheckoutBtn().click();
   });
 });
