@@ -38,5 +38,22 @@ describe('Framework suite', function () {
         'contain',
         'Success! Thank you! Your order will be delivered in next few weeks :-).'
       );
+    cy.get('#navbarResponsive > .navbar-nav > .nav-item > .nav-link').click();
+
+    let totalItemsPrice = 0;
+    checkoutPage
+      .itemsPriceColumn()
+      .each(($el, i, list) => {
+        const ItemPrice = Number($el.text().split(' ')[1]);
+        totalItemsPrice += ItemPrice;
+      })
+      .then(() => {
+        cy.log(totalItemsPrice);
+      });
+
+    checkoutPage.totalItemsPrice().then(($el) => {
+      const totalPrice = Number($el.text().split(' ')[1]);
+      expect(totalPrice).to.equal(totalItemsPrice);
+    });
   });
 });

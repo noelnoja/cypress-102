@@ -18,6 +18,14 @@ class CheckoutPage {
   alertText() {
     return cy.get('.alert');
   }
+
+  itemsPriceColumn() {
+    return cy.get('tr td:nth-child(4) strong');
+  }
+
+  totalItemsPrice() {
+    return cy.get('h3 > strong');
+  }
 }
 
 export default CheckoutPage;
