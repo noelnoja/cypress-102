@@ -2,7 +2,7 @@
 
 describe('Tables', function () {
   it('Handling tables', function () {
-    cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
+    cy.visit(`${Cypress.env('baseUrl')}/AutomationPractice/`);
 
     cy.get('tr td:nth-child(2)').each(($e1, index, $list) => {
       const text = $e1.text();

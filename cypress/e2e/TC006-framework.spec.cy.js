@@ -15,7 +15,7 @@ describe('Framework suite', function () {
   });
 
   it('First test case', function () {
-    cy.visit('https://rahulshettyacademy.com/angularpractice/');
+    cy.visit(`${Cypress.env('baseUrl')}/angularpractice/`);
     homePage.getNameInput().type(this.data.name);
     homePage.getNameInput().should('have.attr', 'minlength', '2');
     homePage.selectGender().select(this.data.gender);
