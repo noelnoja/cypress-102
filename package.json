@@ -7,8 +7,9 @@
   "main": "cypress.config.js",
   "devDependencies": {},
   "scripts": {
-    "test": "npx cypress open",
-    "cloud": "npx cypress run --spec cypress/e2e/*.js --record --key ae9d5efe-27f3-4eae-8121-e2985bbc1a3d --browser chrome"
+    "test": "cypress open",
+    "headless": "cypress run",
+    "dashboard": "cypress run --spec cypress/e2e/*.js --record --key ae9d5efe-27f3-4eae-8121-e2985bbc1a3d --browser chrome"
   },
   "keywords": [],
   "author": "",
