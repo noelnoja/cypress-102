@@ -10,10 +10,11 @@ async function setupNodeEvents(on, config) {
 }
 
 module.exports = defineConfig({
-  defaultCommandTimeout: 6000,
   env: {
     baseUrl: 'https://rahulshettyacademy.com',
   },
+  defaultCommandTimeout: 6000,
+  screenshotOnRunFailure: false,
   projectId: 'qoiw16',
   e2e: {
     setupNodeEvents,

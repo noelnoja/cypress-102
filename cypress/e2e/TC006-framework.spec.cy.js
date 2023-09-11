@@ -17,8 +17,8 @@ describe('Framework suite', function () {
   it('First test case', function () {
     cy.visit(`${Cypress.env('baseUrl')}/angularpractice/`);
     homePage.getNameInput().type(this.data.name);
-    homePage.getNameInput().should('have.attr', 'minlength', '2');
     homePage.selectGender().select(this.data.gender);
+    homePage.getNameInput().should('have.attr', 'minlength', '2');
     homePage.getDataBindingInput().should('have.value', this.data.name);
     homePage.getEntrepreneurRadio().should('be.disabled');
     homePage.productsLink().click();
@@ -38,8 +38,8 @@ describe('Framework suite', function () {
         'contain',
         'Success! Thank you! Your order will be delivered in next few weeks :-).'
       );
-    cy.get('#navbarResponsive > .navbar-nav > .nav-item > .nav-link').click();
 
+    cy.get('#navbarResponsive > .navbar-nav > .nav-item > .nav-link').click();
     let totalItemsPrice = 0;
     checkoutPage
       .itemsPriceColumn()
